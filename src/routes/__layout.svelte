@@ -19,11 +19,11 @@
     flex 1
     width: 80%;
     padding 40px
-    padding-top 5%
     background #FFFFFF
     max-width: 500px;
-    margin: 0 auto
-
+    margin: 5% auto
+    border-radius: 20px
+    border solid 1px gray
   .shiftRight
     margin-left: $sidenav-width
 </style>
