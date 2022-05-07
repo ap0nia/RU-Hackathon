@@ -11,8 +11,8 @@
     showProfileMenu = !showProfileMenu
   }
 
-  let showSidebar = true
-  let showProfileMenu = true
+  let showSidebar = false
+  let showProfileMenu = false
 </script>
 
 <template lang="pug">
