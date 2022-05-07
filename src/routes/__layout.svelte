@@ -17,6 +17,7 @@
   main
     margin-left: 0
     transition: $sidenav-transition
+    flex 1
 
   .shiftRight
     margin-left: $sidenav-width
