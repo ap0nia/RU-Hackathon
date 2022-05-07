@@ -23,7 +23,7 @@
     max-width: 500px;
     margin: 5% auto
     border-radius: 20px
-    border solid 1px gray
+    border solid 2px #58094f
   .shiftRight
     margin-left: $sidenav-width
 </style>
