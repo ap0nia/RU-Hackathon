@@ -21,11 +21,11 @@
     const assetID = body.data.qrCode.assetId
     const imageData = body.data.qrCode.image.data
 
-    const username = $session.username
+    const user = $session.user
 
     set(ref(db, 'users'), {
-      name: username,
-      assetID: assetID,
+      user,
+      assetID,
     })
 
     localStorage.setItem('qr', imageData)

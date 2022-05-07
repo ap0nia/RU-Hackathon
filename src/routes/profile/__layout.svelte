@@ -15,17 +15,16 @@
   let client
 
   onMount(async () => {
+    client = await createClient()
     if (!$session.isAuthenticated) {
-      client = await createClient()
       const authAuthenticated = await client.isAuthenticated()
       if (!authAuthenticated) {
         goto('/login')
         return
       }
-
-      $session.isAuthenticated = true
-      $session.user = await client.getUser()
     }
+    $session.isAuthenticated = true
+    $session.user = await client.getUser()
   })
 </script>
 
