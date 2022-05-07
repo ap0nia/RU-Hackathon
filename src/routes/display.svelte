@@ -33,13 +33,6 @@
 
 <style lang="stylus">
   .container
-    min-height 100%
-    width: 80%;
-    padding 40px
-    padding-top 5%
-    background #FFFFFF
-    max-width: 500px;
-    margin: 0 auto
     h2 
       margin-top 10px
       border-bottom solid black 2px

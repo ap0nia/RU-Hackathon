@@ -49,16 +49,6 @@
 </template>
 
 <style lang="stylus">
-  .container {
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .container * {
-    box-sizing: border-box;
-  }
-  
   .flex-outer{
     list-style-type: none;
     padding: 0;
@@ -82,7 +72,7 @@
     padding: 8px;
     font-weight: 300;
     letter-spacing: .09em;
-    text-transform: uppercase;
+    //text-transform: uppercase;
   }
   
   .flex-outer > li > label,
@@ -112,7 +102,7 @@
     border: none;
     background: #333;
     color: #f2f2f2;
-    text-transform: uppercase;
+    //text-transform: uppercase;
     letter-spacing: .09em;
     border-radius: 2px;
   }
