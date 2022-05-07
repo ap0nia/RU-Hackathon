@@ -15,9 +15,17 @@
 <template lang="pug">
   .profileDropdown(class:hidden='{!showProfileDropdown}')
     ul
-      li: a(href='/profile/') Account
-      li: button() Settings
-      li: button(on:click='{handleLogout}') Logout
+      li 
+        span.fa-solid.fa-address-book.fa-1x
+        a(href='/profile') Account
+
+      li
+        span.fa-solid.fa-sliders.fa-1x
+        a(href='/profile/') Settings
+
+      li
+        span.fa-solid.fa-arrow-right-from-bracket.fa-1x
+        a(href='/profile/') Logout
 </template>
 
 <style lang="stylus">
@@ -47,6 +55,9 @@
     align-items: center
 
     list-style: none
+
+  span
+    margin-right: 0.5rem
 
   a, button
     font-size: 1rem
