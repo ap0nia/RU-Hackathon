@@ -41,12 +41,13 @@
   </script>
   
   <template lang="pug">
-      Display('{...props}')
-      h1 Edit
+      Display('{...props} showReviews=false')
+      h1 Edit Asset
       Form
   </template>
 
   <style lang='stylus'>
     h1
         border-bottom: solid black
+        margin-top 10px
   </style>

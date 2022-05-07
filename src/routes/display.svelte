@@ -7,7 +7,8 @@
     return {
       props: {
         assetID,
-        ...customAttributes
+        ...customAttributes,
+        showReviews: false
       },
     }
   }
@@ -18,17 +19,18 @@
   export let name
   export let description
   export let reviews
-  console.log(reviews)
+  export let showReviews
 </script>
 
 <template lang="pug">
   h1 {name}
   p {description}
-  h2 Reviews
-  +each('reviews as {rating, fulltext}')
-    div#rating
-      h3 {rating}/5
-      span {fulltext}
+  +if('showReviews==="true"')
+    h2 Reviews
+    +each('reviews as {rating, fulltext}')
+      div#rating
+        h3 {rating}/5
+        span {fulltext}
 </template>
 
 <style lang="stylus">
