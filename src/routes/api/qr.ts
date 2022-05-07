@@ -1,8 +1,4 @@
-import { Openscreen } from '@openscreen/sdk'
-const os = new Openscreen().config({
-  key: import.meta.env.VITE_OS_API_KEY,
-  secret: import.meta.env.VITE_OS_API_SECRET,
-})
+import {os} from '$lib/openscreen'
 const projectId = import.meta.env.VITE_PROJECT_ID
 
 async function main() {
