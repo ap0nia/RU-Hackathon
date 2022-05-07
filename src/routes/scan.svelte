@@ -10,7 +10,17 @@ export async function load({url}) {
             customAttributes: {
                 registered: false,
                 name: 'Test asset',
-                description: 'This should be replaced soon enough'
+                description: 'This should be replaced soon enough',
+                reviews: [
+                    {
+                        rating: 5,
+                        fulltext: 'This asset is so great'
+                    },
+                    {
+                        rating: 4,
+                        fulltext: 'Meh, it\'s ok'
+                    }
+                ]  
             }
         },
         qrCode: {
