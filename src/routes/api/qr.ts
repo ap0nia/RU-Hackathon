@@ -1,5 +1,4 @@
-import {os} from '$lib/openscreen'
-const projectId = import.meta.env.VITE_PROJECT_ID
+import {os, projectId} from '$lib/openscreen'
 
 async function main() {
   // Create an asset and generate a QR Code
