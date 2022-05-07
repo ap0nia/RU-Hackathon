@@ -4,5 +4,4 @@
 </template>
 
 <style lang="stylus">
-
 </style>
