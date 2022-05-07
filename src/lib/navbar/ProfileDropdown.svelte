@@ -8,7 +8,6 @@
     const client = await createClient()
     await logout(client)
     $session.isAuthenticated = false
-    goto('/login')
   }
   export let showProfileDropdown = true
 </script>
