@@ -17,13 +17,14 @@
   main
     transition: $sidenav-transition
     flex 1
-    width: 80%;
     padding 40px
     background #FFFFFF
     max-width: 500px;
-    margin: 5% auto
-    border-radius: 20px
-    border solid 2px #58094f
+    @media screen and (min-width: 500px)
+      border solid 2px #58094f
+      width: 80%;
+      border-radius: 20px
+      margin: 5% auto
   .shiftRight
     margin-left: $sidenav-width
 </style>
