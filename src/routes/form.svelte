@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" context="module">
   export async function load({url}) {
     return {
       props: {
@@ -12,6 +12,10 @@
 
   let name = ''
   let description = ''
+</script>
+
+<script lang="ts">
+  export let id
 </script>
 
 <template lang="pug">
