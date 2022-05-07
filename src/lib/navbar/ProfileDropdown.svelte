@@ -48,13 +48,14 @@
 
     list-style: none
 
-  button
+  a, button
+    font-size: 1rem
+    color: black
+    text-decoration: none
     background: none
     border: none
-    color black
 
     transition: 350ms
-
     &:hover
       cursor: pointer
       color: #555
