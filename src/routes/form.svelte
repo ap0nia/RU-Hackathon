@@ -20,9 +20,6 @@
       },
     }
   }
-  async function submit() {
-    console.log('submitted')
-  }
 
   let name = ''
   let description = ''
@@ -62,19 +59,14 @@
     box-sizing: border-box;
   }
   
-  .flex-outer,
-  .flex-inner {
+  .flex-outer{
     list-style-type: none;
     padding: 0;
-  }
-  
-  .flex-outer {
     max-width: 800px;
     margin: 0 auto;
   }
   
-  .flex-outer li,
-  .flex-inner {
+  .flex-outer li{
     justify-content center
     display: flex;
     flex-wrap: wrap;
