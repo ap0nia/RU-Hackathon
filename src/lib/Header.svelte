@@ -1,27 +1,52 @@
 <script lang="ts">
-  import Profile from '$lib/navbar/Profile.svelte'
+  import SideNav from '$lib/navbar/SideNav.svelte'
   import Title from '$lib/navbar/Title.svelte'
-  import Sidebar from '$lib/navbar/Sidebar.svelte'
+  import ProfileDropdown from '$lib/navbar/ProfileDropdown.svelte'
 
-  function toggleSidebar() {
-    showSidebar = !showSidebar
+  import { createEventDispatcher } from 'svelte'
+  const dispatch = createEventDispatcher()
+
+  import clickOutside from '$lib/utils/clickOutside'
+
+  let showSideNav = false
+  let showProfileDropdown = false
+
+  function toggleSideNav() {
+    showSideNav = !showSideNav
+
+    dispatch('sideNavEvent', { sideNavIsOpen: showSideNav })
   }
 
-  function toggleProfileMenu() {
-    showProfileMenu = !showProfileMenu
+  function closeSideNav() {
+    showSideNav = false
+    dispatch('sideNavEvent', { sideNavIsOpen: false })
   }
 
-  let showSidebar = false
-  let showProfileMenu = false
+  function toggleProfileDropdown() {
+    showProfileDropdown = !showProfileDropdown
+  }
+
+  function closeProfileDropdown() {
+    showProfileDropdown = false
+  }
 </script>
 
 <template lang="pug">
   header
-    i.fa-solid.fa-bars.fa-3x(on:click='{toggleSidebar}')
+    .hamburger: span.fa-solid.fa-bars.fa-3x(
+      on:click='{toggleSideNav}'
+      use:clickOutside
+      on:outclick='{closeSideNav}'
+    )
     .title: Title
-    i.fa-solid.fa-user.fa-3x(on:click='{toggleProfileMenu}')
-  .sidebar: Sidebar(showSidebar='{showSidebar}')
-  .profile: Profile(showProfileMenu='{showProfileMenu}')
+    .profileIcon: span.fa-solid.fa-user.fa-3x(
+      on:click='{toggleProfileDropdown}'
+      use:clickOutside
+      on:outclick='{closeProfileDropdown}'
+    )
+
+  .sideNav: SideNav(showSidebar='{showSideNav}')
+  .profileDropdown: ProfileDropdown(showProfileDropdown='{showProfileDropdown}')
 </template>
 
 <style lang="stylus">
@@ -35,7 +60,7 @@
     color: white
     background: hsl(307, 82, 19)
 
-  i
+  span
     transition: 300ms
 
     &:hover

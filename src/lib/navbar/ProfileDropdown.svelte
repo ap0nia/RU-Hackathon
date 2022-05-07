@@ -1,10 +1,10 @@
 <script lang="ts">
   let username = 'defaultusername'
-  export let showProfileMenu = true
+  export let showProfileDropdown = true
 </script>
 
 <template lang="pug">
-  .profileMenu(class:hidden='{!showProfileMenu}')
+  .profileDropdown(class:hidden='{!showProfileDropdown}')
     ul
       li: button() Account
       li: button() Settings
@@ -12,7 +12,7 @@
 </template>
 
 <style lang="stylus">
-  .profileMenu
+  .profileDropdown
     position: absolute
     right: 0
     height: 8rem
