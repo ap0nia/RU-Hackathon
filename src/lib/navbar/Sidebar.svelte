@@ -1,5 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
+  import { fade } from 'svelte/transition'
 
   const dispatch = createEventDispatcher()
 
@@ -12,6 +13,8 @@
       li: a(href='/') Home
       li: a(href='/data') Data page
       li: a(href='/form') Form page
+  +if('showSidebar')
+    .modal(transition:fade)
 </template>
 
 <style lang="stylus">
@@ -25,6 +28,10 @@
     overflow: hidden
     white-space: nowrap
     background: hsl(14, 88, 59)
+    z-index: 1
+
+  .hidden
+    width: 0px
 
   ul
     height: 100%
@@ -44,6 +51,9 @@
     &:hover
       color: red
 
-  .hidden
-    width: 0px
+  .modal
+    background: hsla(0, 0, 0, 0.5)
+    position: absolute
+    width: 100%
+    height: 100%
 </style>
