@@ -34,18 +34,17 @@
   +if('didUpdate')
     p Success! You have registered the asset.
     +else
-      div.container
-        form
-          ul.flex-outer
-            li
-              label(for='name') Name of Item
-                input(type='text' name='name' bind:value='{name}')
-            li
-              label(for='description') Description
-                textarea(name='description' bind:value='{description}')
-            input(type='hidden' name='id' value='{assetID}')
-            li
-              button(type='submit' on:click='{submit}') Submit
+      form
+        ul.flex-outer
+          li
+            label(for='name') Name of Item
+              input(type='text' name='name' bind:value='{name}')
+          li
+            label(for='description') Description
+              textarea(name='description' bind:value='{description}')
+          input(type='hidden' name='id' value='{assetID}')
+          li
+            button(type='submit') Submit
 </template>
 
 <style lang="stylus">

@@ -3,7 +3,7 @@
     const assetID = url.searchParams.get('id')
     //TODO: if the custom attributes aren't in the search params, try loading them from the API
     const customAttributes = JSON.parse(url.searchParams.get('attrs'))
-
+    console.log('load is running')
     return {
       props: {
         assetID,
@@ -18,25 +18,24 @@
   export let name
   export let description
   export let reviews
+  console.log(reviews)
 </script>
 
 <template lang="pug">
-  div.container
-    h1 {name}
-    p {description}
-    h2 Reviews
-    +each('reviews as {rating, fulltext}')
-      div#rating
-        h3 {rating}/5
-        span {fulltext}
+  h1 {name}
+  p {description}
+  h2 Reviews
+  +each('reviews as {rating, fulltext}')
+    div#rating
+      h3 {rating}/5
+      span {fulltext}
 </template>
 
 <style lang="stylus">
-  .container
-    h2 
-      margin-top 10px
-      border-bottom solid black 2px
-      margin-bottom 10px
+  h2 
+    margin-top 10px
+    border-bottom solid black 2px
+    margin-bottom 10px
   #rating
     h3
       display inline

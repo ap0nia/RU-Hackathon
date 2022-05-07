@@ -8,7 +8,7 @@ export async function load({url}) {
         asset: {
             assetId: 'abc123',
             customAttributes: {
-                registered: true,
+                registered: false,
                 name: 'Test asset',
                 description: 'This should be replaced soon enough',
                 reviews: [

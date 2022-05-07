@@ -15,9 +15,14 @@
 
 <style lang="stylus">
   main
-    margin-left: 0
     transition: $sidenav-transition
     flex 1
+    width: 80%;
+    padding 40px
+    padding-top 5%
+    background #FFFFFF
+    max-width: 500px;
+    margin: 0 auto
 
   .shiftRight
     margin-left: $sidenav-width
