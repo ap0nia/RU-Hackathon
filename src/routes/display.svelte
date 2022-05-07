@@ -8,7 +8,7 @@
       props: {
         assetID,
         ...customAttributes,
-        showReviews: false
+        showReviews: 'true'//this is a string because it's also passed from parent components, and that casts it to string for some reason.
       },
     }
   }
