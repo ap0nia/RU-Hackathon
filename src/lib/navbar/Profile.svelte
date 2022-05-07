@@ -1,5 +1,6 @@
 <template lang="pug">
-  h1 hello, RU hacks!
+  h1 profile here
+  i.fa-solid.fa-user.fa-3x
 </template>
 
 <style lang="stylus">

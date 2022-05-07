@@ -1,19 +1,19 @@
-async function post({request}) {
+async function post({ request }) {
   const body = await request.json()
   const { username, password } = body
   if (username === 'hello' && password === 'world') {
     return {
       status: 200,
       body: {
-        message: 'you win!'
-      }
+        message: 'you win!',
+      },
     }
   }
   return {
     status: 403,
     body: {
-      message: 'you lose!'
-    }
+      message: 'you lose!',
+    },
   }
 }
 
