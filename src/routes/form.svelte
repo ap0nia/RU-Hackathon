@@ -1,13 +1,13 @@
 <script lang="ts" context="module">
-  export async function load({url}) {
+  export async function load({ url }) {
     const assetID = url.searchParams.get('id')
-    let didUpdate=false;
-    if(url.searchParams.get('name')) {
-      didUpdate=true;
+    let didUpdate = false
+    if (url.searchParams.get('name')) {
+      didUpdate = true
       const customAttributes = {
         registered: true,
         name: url.searchParams.get('name'),
-        description: url.searchParams.get('description')
+        description: url.searchParams.get('description'),
       }
       console.log(assetID, customAttributes)
       //use openscreen to update asset with new custom attributes
@@ -15,8 +15,8 @@
     return {
       props: {
         assetID,
-        didUpdate
-      }
+        didUpdate,
+      },
     }
   }
   async function submit() {
@@ -47,4 +47,11 @@
   h1 current form state:
   p name: {name}
   p description: {description}
+  .container
+    span
+      a(href='/') asdfkj
 </template>
+
+<style lang="stylus">
+
+</style>

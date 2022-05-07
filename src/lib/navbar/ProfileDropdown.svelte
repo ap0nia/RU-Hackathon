@@ -6,7 +6,7 @@
 <template lang="pug">
   .profileDropdown(class:hidden='{!showProfileDropdown}')
     ul
-      li: button() Account
+      li: a(href='/profile/') Account
       li: button() Settings
       li: button() Logout
 </template>

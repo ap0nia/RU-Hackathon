@@ -3,18 +3,19 @@
 
   async function getQrCode() {
     const res = await fetch('/api/qr')
-    const {
-      data: {
-        qrCode: {
-          image: { data: imageData },
-        },
-      },
-    } = await res.json()
+    //const {
+    //  data: {
+    //    qrCode: {
+    //      image: { data: imageData },
+    //    },
+    //  },
+    //} = await res.json()
+    const body = await res.json()
+    console.log(body)
     localStorage.setItem('qr', imageData)
   }
 
   async function saveQrCode() {
-    // create a new handle
     const saveOptions = {
       types: [
         {
@@ -37,7 +38,7 @@
     const writableStream = await newHandle.createWritable(writeOptions)
 
     // write our file
-    await writableStream.write(atob(image))
+    await writableStream.write(imageBlob)
 
     // close the file and write the contents to disk.
     await writableStream.close()
