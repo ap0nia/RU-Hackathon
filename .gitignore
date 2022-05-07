@@ -4,3 +4,4 @@ desktop.ini
 node_modules
 .svelte-kit
 .vercel-build-output
+.env
