@@ -1,0 +1,15 @@
+import adapter from '@sveltejs/adapter-vercel'
+import preprocess from 'svelte-preprocess'
+import path from 'path'
+
+export default {
+  kit: {
+    adapter: adapter(),
+  },
+  preprocess: preprocess({
+    stylus: {
+      paths: [path.resolve('./src/theme')],
+      prependData: `@require 'theme.styl'`,
+    },
+  }),
+}
