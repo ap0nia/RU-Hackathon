@@ -17,10 +17,15 @@
   export let assetID
   export let name
   export let description
+  export let reviews
 </script>
 
 <template lang="pug">
     h1 {name}
     p {description}
     p {assetID}
+    +each('reviews as {rating, fulltext}')
+      div
+        h1 {rating}
+        p {fulltext}
 </template>
