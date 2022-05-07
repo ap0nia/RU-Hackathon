@@ -21,11 +21,33 @@
 </script>
 
 <template lang="pug">
+  div.container
     h1 {name}
     p {description}
-    p {assetID}
+    h2 Reviews
     +each('reviews as {rating, fulltext}')
-      div
-        h1 {rating}
-        p {fulltext}
+      div#rating
+        h3 {rating}/5
+        span {fulltext}
 </template>
+
+<style lang="stylus">
+  .container
+    width: 80%;
+    padding-top 5%
+    max-width: 400px;
+    margin: 0 auto
+    h2 
+      margin-top 10px
+      border-bottom solid black 2px
+      margin-bottom 10px
+  #rating
+    h3
+      display inline
+      margin-right 10px
+    margin-bottom 10px
+    background #EEEEEE
+    border-radius 5px
+    padding 5px
+
+</style>

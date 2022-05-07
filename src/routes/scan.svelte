@@ -8,13 +8,13 @@ export async function load({url}) {
         asset: {
             assetId: 'abc123',
             customAttributes: {
-                registered: false,
+                registered: true,
                 name: 'Test asset',
                 description: 'This should be replaced soon enough',
                 reviews: [
                     {
                         rating: 5,
-                        fulltext: 'This asset is so great'
+                        fulltext: 'This asset is so great. My review is long enough that it should wrap to multiple lines. I hope this doesn\'t mess up rendering!'
                     },
                     {
                         rating: 4,
