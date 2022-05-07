@@ -1,8 +1,5 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte'
   import { fade } from 'svelte/transition'
-
-  const dispatch = createEventDispatcher()
 
   export let showSidebar = true
 </script>
@@ -11,8 +8,11 @@
   nav(class:hidden='{!showSidebar}')
     ul
       li: a(href='/') Home
-      li: a(href='/data') Data page
-      li: a(href='/form') Form page
+      li: a(href='/data') Data
+      li: a(href='/form') Form
+      li: a(href='/display') Display
+      li: a(href='/scan') Scan
+
   +if('showSidebar')
     .modal(transition:fade)
 </template>
@@ -20,10 +20,9 @@
 <style lang="stylus">
   nav
     position: absolute
-    width: 10rem
-    height: 30vh
+    width: $sidenav-width
 
-    transition: 400ms
+    transition: $sidenav-transition
 
     overflow: hidden
     white-space: nowrap
@@ -35,21 +34,26 @@
 
   ul
     height: 100%
+    padding: 1rem 0
 
     display: flex
     flex-direction: column
-    justify-content: space-evenly
+    justify-content: space-around
     align-items: center
+    row-gap: 2rem
 
     list-style: none
 
   a
+    font-size: 1.2rem
+    font-weight: 500
+
     text-decoration: none
     color: black
     transition: 300ms
 
     &:hover
-      color: red
+      color: hsl(186, 50, 81)
 
   .modal
     background: hsla(0, 0, 0, 0.5)
