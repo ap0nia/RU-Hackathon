@@ -9,7 +9,7 @@
     client = await createClient()
     const res = await loginWithPopup(client, {})
     $session.isAuthenticated = await client.isAuthenticated()
-    $session.username = await client.getUser()
+    $session.user = await client.getUser()
     goto('/profile')
   }
 </script>
