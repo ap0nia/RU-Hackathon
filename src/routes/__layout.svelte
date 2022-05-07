@@ -10,7 +10,7 @@
 
 <template lang="pug">
   Header(on:sideNavEvent='{chaChaSlide}')
-  main(class:shiftRight='{shiftContentRight}'): slot
+  main: slot
 </template>
 
 <style lang="stylus">

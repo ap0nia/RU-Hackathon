@@ -18,21 +18,19 @@
     if (!$session.isAuthenticated) {
       client = await createClient()
       const authAuthenticated = await client.isAuthenticated()
-
-      console.log(authAuthenticated)
-
       if (!authAuthenticated) {
         goto('/login')
         return
       }
 
       $session.isAuthenticated = true
-      $session.username = await client.getUser()
+      $session.user = await client.getUser()
     }
   })
 </script>
 
 <template lang="pug">
   h1 profile page
+  p Welcome {$session.user?.given_name}
   slot
 </template>
