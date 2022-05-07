@@ -1,5 +1,15 @@
 <script lang="ts">
+  import { createClient, logout } from '$lib/auth'
+  import { session } from '$app/stores'
+  import { goto } from '$app/navigation'
   let username = 'defaultusername'
+
+  async function handleLogout() {
+    const client = await createClient()
+    await logout(client)
+    $session.isAuthenticated = false
+    goto('/login')
+  }
   export let showProfileDropdown = true
 </script>
 
@@ -8,7 +18,7 @@
     ul
       li: a(href='/profile/') Account
       li: button() Settings
-      li: button() Logout
+      li: button(on:click='{handleLogout}') Logout
 </template>
 
 <style lang="stylus">
