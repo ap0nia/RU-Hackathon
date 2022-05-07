@@ -1,14 +1,16 @@
 <script lang="ts">
-  import auth from '$lib/auth'
+  import { createClient, loginWithPopup } from '$lib/auth'
   import { session } from '$app/stores'
+  import { goto } from '$app/navigation'
 
   let client
 
   async function login() {
-    client = await auth.createClient()
-    const res = await auth.loginWithPopup(client, {})
+    client = await createClient()
+    const res = await loginWithPopup(client, {})
     $session.isAuthenticated = await client.isAuthenticated()
-    $session.user(await client.getUser())
+    $session.username = await client.getUser()
+    goto('/profile')
   }
 </script>
 

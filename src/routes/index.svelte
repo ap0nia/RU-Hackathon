@@ -1,17 +1,13 @@
 <script lang="ts">
-  import fs from 'fs'
-
   async function getQrCode() {
     const res = await fetch('/api/qr')
-    //const {
-    //  data: {
-    //    qrCode: {
-    //      image: { data: imageData },
-    //    },
-    //  },
-    //} = await res.json()
-    const body = await res.json()
-    console.log(body)
+    const {
+      data: {
+        qrCode: {
+          image: { data: imageData },
+        },
+      },
+    } = await res.json()
     localStorage.setItem('qr', imageData)
   }
 
@@ -28,7 +24,6 @@
     const image = localStorage.getItem('qr')
 
     const imageBlob = new Blob([atob(image)], { type: 'image/png' })
-    console.log(imageBlob)
 
     const newHandle = await window.showSaveFilePicker(saveOptions)
 
