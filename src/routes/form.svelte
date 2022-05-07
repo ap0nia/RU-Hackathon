@@ -5,6 +5,7 @@
     if(url.searchParams.get('name')) {
       didUpdate=true;
       const customAttributes = {
+        registered: true,
         name: url.searchParams.get('name'),
         description: url.searchParams.get('description')
       }
