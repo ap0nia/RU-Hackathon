@@ -33,7 +33,7 @@
 
     overflow: hidden
     transition: 300ms
-    background: red
+    background: secondary_color
 
   .hidden
     height: 0
@@ -51,11 +51,11 @@
   button
     background: none
     border: none
-    color: white
+    color black
 
     transition: 350ms
 
     &:hover
       cursor: pointer
-      color: yellow
+      color: #555
 </style>

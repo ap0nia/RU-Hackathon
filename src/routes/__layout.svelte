@@ -18,10 +18,9 @@
     transition: $sidenav-transition
     flex 1
     padding 40px
-    background #FFFFFF
+    background theme_color
     max-width: 500px;
     @media screen and (min-width: 500px)
-      border solid 2px #58094f
       width: 80%;
       border-radius: 20px
       margin: 5% auto

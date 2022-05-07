@@ -26,7 +26,7 @@
 
     overflow: hidden
     white-space: nowrap
-    background: hsl(14, 88, 59)
+    background: secondary_color
     z-index: 1
 
   .hidden
@@ -53,7 +53,7 @@
     transition: 300ms
 
     &:hover
-      color: hsl(186, 50, 81)
+      color: #555
 
   .modal
     background: hsla(0, 0, 0, 0.5)

@@ -57,14 +57,14 @@
     display: flex
     align-items: center
 
-    color: white
-    background: hsl(307, 82, 19)
+    background: theme_color
 
   span
     transition: 300ms
 
     &:hover
-      color: blue
+      color secondary_color
+      cursor pointer
 
   .title
     display: flex
