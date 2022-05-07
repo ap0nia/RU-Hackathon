@@ -9,7 +9,8 @@
 </script>
 
 <script lang="ts">
-  export let username
+  import { session } from '$app/stores'
+  const username = $session.username ? $session.username.given_name : ''
 </script>
 
 <template lang="pug">

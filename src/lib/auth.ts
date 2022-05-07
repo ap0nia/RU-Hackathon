@@ -29,10 +29,4 @@ function logout(client) {
   return client.logout()
 }
 
-const auth = {
-  createClient,
-  loginWithPopup,
-  logout,
-}
-
-export default auth
+export { createClient, loginWithPopup, logout }
