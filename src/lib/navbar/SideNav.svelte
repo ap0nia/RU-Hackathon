@@ -10,18 +10,10 @@
       li
         span.fa-solid.fa-house-chimney.fa-2x
         a(href='/') Home
-      li 
-        span.fa-solid.fa-database.fa-2x
-        a(href='/data') Data
-      li
-        span.fa-solid.fa-align-left.fa-2x
-        a(href='/create') Create
+
       li
         span.fa-solid.fa-display.fa-2x
-        a(href='/display') Display
-      li
-        span.fa-solid.fa-qrcode.fa-2x
-        a(href='/scan') Scan
+        a(href='/') Display
 
   +if('showSidebar')
     .modal(transition:fade)

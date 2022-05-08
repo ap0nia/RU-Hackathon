@@ -1,16 +1,37 @@
-import {os} from '$lib/openscreen'
-export async function get() {
-  const assetIds = [
-    '004d38b4-c5f8-4588-b58c-a8c5b351e382',
-    '012079da-6e67-4495-be53-1165d07cd056',
-    '6aa6ab93-ba4f-4747-a328-40b2813a832e'
-  ]
-  const assets = await Promise.all(assetIds.map(assetId=> {
-    return os.asset(assetId).get()
-  }))
+import { os } from '$lib/openscreen'
+import { getDatabase, ref, onValue, get as dbGet } from 'firebase/database'
+import { initializeApp } from 'firebase/app'
+
+const firebaseConfig = {
+  ...import.meta.env.VITE_FIREBASE_CREDENTIALS,
+  databaseURL: import.meta.env.VITE_FIREBASE_URL,
+}
+
+async function getAssetIDs() {
+  const app = initializeApp(firebaseConfig)
+  const db = getDatabase(app)
+  const id = 'brianmv'
+
+  const userRef = ref(db, 'users/' + id)
+  const snapshot = await dbGet(userRef)
+  const { assetIDs } = snapshot.val()
+
+  return assetIDs
+}
+
+async function get() {
+  const assetIDs = await getAssetIDs()
+  const res = await Promise.all(
+    assetIDs.map((assetID) => {
+      return os.asset(assetID).get()
+    })
+  )
+
   return {
     body: {
-      assets,
+      assetIDs: res,
     },
   }
 }
+
+export { get }

@@ -4,13 +4,13 @@
     let didUpdate = false
     if (url.searchParams.get('name')) {
       didUpdate = true
-      await fetch('/api/create',{
-        method:'POST',
+      await fetch('/api/create', {
+        method: 'POST',
         body: JSON.stringify({
           name: url.searchParams.get('name'),
           description: url.searchParams.get('description'),
-          assetId
-        })
+          assetId,
+        }),
       })
       // const customAttributes = {
       //   registered: true,

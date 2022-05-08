@@ -21,7 +21,11 @@
 
       li
         span.fa-solid.fa-sliders.fa-1x
-        a(href='/profile/') Settings
+        a(href='/create') New QR
+
+      li
+        span.fa-solid.fa-sliders.fa-1x
+        a(href='/profile/codeListing') Owned QR
 
       li
         span.fa-solid.fa-arrow-right-from-bracket.fa-1x
@@ -32,8 +36,8 @@
   .profileDropdown
     position: absolute
     right: 0
-    height: 8rem
-    width: 7rem
+    height: 15rem
+    width: 10rem
 
     display: flex
     flex-direction: column
@@ -53,6 +57,7 @@
     flex-direction: column
     justify-content: space-evenly
     align-items: center
+    gap: 1rem
 
     list-style: none
 
