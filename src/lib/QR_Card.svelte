@@ -2,7 +2,8 @@
   import { onMount } from 'svelte'
   let assetId, name, description
   onMount(async ()=> {
-    ({assetId, name, description} = asset.asset)
+    ({assetId, description} = asset.asset)
+    name = asset.asset.customAttrbutes?.name||'Uninitialized QR Code'
     if(!pngData)
       pngData = asset.asset.qrCodes[0].image.data
     console.log(asset)

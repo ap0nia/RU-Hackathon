@@ -6,7 +6,7 @@ async function main() {
     .project(projectId)
     .assets()
     .create({
-      name: 'Generated Asset',
+      name: 'Custom QR Code',
       qrCodes: [
         {
           intent: 'https://ru-hackathon.vercel.app/scan',
@@ -22,9 +22,8 @@ async function main() {
   // Note: The qrCodeId within the asset object can be accessed through asset.asset.qrCodes[0].qrCodeId
   const { qrCodeId } = asset.asset.qrCodes[0]
 
-  // Returns a scannable QR Code and saves the png file in your project folder
+  // Returns a scannable QR Code
   const qrCode = await os.qrCode(qrCodeId).get({ format: 'png', dataUrl: true })
-  await os.saveQrImageDataToFile(qrCode, 'my-first-qr-code.png')
 
   // Returns the Openscreen qrCode object
   // console.log('QR Code:', JSON.stringify(qrCode, '', 2))

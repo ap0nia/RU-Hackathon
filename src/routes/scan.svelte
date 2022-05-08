@@ -10,7 +10,7 @@
             }
         const {name, description} = scan.asset
         const reviews = scan.asset.customAttributes.reviews
-        const props = {reviews, name, description}
+        const props = {reviews, name:scan.asset.customAttributes.name, description}
         return {
             props: {
                 props
