@@ -33,6 +33,8 @@
 
   let name = ''
   let description = ''
+  let rating = 10
+  let review = ''
 </script>
 
 <script lang="ts">
@@ -41,20 +43,22 @@
 </script>
 
 <template lang="pug">
-  +if('didUpdate')
-    p Success! You have registered the asset.
-    +else
-      form
-        ul.flex-outer
-          li
-            label(for='name') Name of Item
-              input(type='text' name='name' bind:value='{name}')
-          li
-            label(for='description') Description
-              textarea(name='description' bind:value='{description}')
-          input(type='hidden' name='id' value='{assetId}')
-          li
-            button(type='submit') Submit
+  form
+    ul.flex-outer
+      li
+        label(for='name') Name of Item
+          input(type='text' name='name' bind:value='{name}')
+      li
+        label(for='description') Description
+          textarea(name='description' bind:value='{description}')
+      li
+        label(for='rating') Rating: {rating}
+          input(type='range' min="1" max="10" name='rating' bind:value='{rating}')
+      li
+        label(for='review') Review
+          textarea(name='review' bind:value='{review}')
+      li
+        button(type='submit') Submit
 </template>
 
 <style lang="stylus">
@@ -118,5 +122,9 @@
   
   .flex-inner li {
     width: 100px;
+  }
+
+  .flex-outer li input[type='range']{
+    padding: 0
   }
 </style>
