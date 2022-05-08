@@ -33,7 +33,7 @@ export async function load({url}) {
     if(!response.asset.customAttributes.registered)
         return {
             status: 302,
-            redirect: `/form?id=${response.asset.assetId}&attrs=${encodeURIComponent(JSON.stringify(response.asset.customAttributes))}`,
+            redirect: `/create?id=${response.asset.assetId}&attrs=${encodeURIComponent(JSON.stringify(response.asset.customAttributes))}`,
         }
     return {
         props: {

@@ -9,7 +9,7 @@
     ul
       li: a(href='/') Home
       li: a(href='/data') Data
-      li: a(href='/form') Form
+      li: a(href='/create') Create
       li: a(href='/display') Display
       li: a(href='/scan') Scan
 
