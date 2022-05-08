@@ -12,16 +12,16 @@
         a(href='/') Home
       li 
         span.fa-solid.fa-database.fa-2x
-        a(href='/') Data
+        a(href='/data') Data
       li
         span.fa-solid.fa-align-left.fa-2x
-        a(href='/') Form
+        a(href='/form') Form
       li
         span.fa-solid.fa-display.fa-2x
-        a(href='/') Display
+        a(href='/display') Display
       li
         span.fa-solid.fa-qrcode.fa-2x
-        a(href='/') Scan
+        a(href='/scan') Scan
 
   +if('showSidebar')
     .modal(transition:fade)

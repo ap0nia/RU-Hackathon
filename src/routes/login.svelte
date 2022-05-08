@@ -18,7 +18,9 @@
   .form
     h1 Login
     hr
-    button(type='submit' on:click='{login}') Login
+    button(type='submit' on:click='{login}')
+      img(src='/auth0.svg' height='30rem')
+      h1 Login
 </template>
 
 <style lang="stylus">
@@ -36,8 +38,14 @@
     border-radius: .125rem
 
   button
-    width: 9rem
+    padding: 0 3rem
     height: 5rem
+
+    display: flex
+    align-items: center
+    justify-content: space-evenly
+    gap: 2rem
+
     background: secondary_color
     transition: 200ms
     border-radius: 0.5rem
