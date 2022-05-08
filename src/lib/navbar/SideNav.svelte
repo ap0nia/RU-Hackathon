@@ -12,8 +12,12 @@
         a(href='/') Home
 
       li
-        span.fa-solid.fa-display.fa-2x
-        a(href='/') Display
+        span.fa-solid.fa-graduation-cap.fa-2x
+        a(href='/about') About Us
+
+      li
+        span.fa-solid.fa-bomb.fa-2x
+        a(href='/purpose') Purpose
 
   +if('showSidebar')
     .modal(transition:fade)

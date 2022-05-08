@@ -29,6 +29,13 @@
 </script>
 
 <template lang="pug">
-  p Welcome {$session.user?.given_name}
-  slot
+  .profile
+    h1 Welcome {$session.user?.given_name}
+    slot
 </template>
+
+<style lang="stylus">
+  h1
+    text-align: center
+    margin-bottom: 2rem
+</style>
