@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { getDatabase, ref, set } from 'firebase/database'
+  import { getDatabase, ref, set, onValue, update, push, get } from 'firebase/database'
   import { initializeApp } from 'firebase/app'
   import { session } from '$app/stores'
+  // import { GetScansByAssetIdRequest } from '@openscreen/sdk';
   import QR_Card from '$lib/QR_Card.svelte'
 
   // TODO: Replace with your app's Firebase project configuration
@@ -23,13 +24,32 @@
     const imageData = body.data.qrCode.image.data
     console.log(body)
     const user = $session.user
-    createdAssets = [...createdAssets,{asset: body.data.asset, pngData: imageData}]
-    console.log(createdAssets)
-    set(ref(db, 'users'), {
-      user,
-      assetID,
-    })
+    const userEmail = user.email.split('@')[0]
+    const assetIDsRef = ref(db, 'users/' + userEmail + "/assetIDs");
 
+
+    const dbRef = ref(getDatabase());
+    get(assetIDsRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log("snapshot does exist")
+        const value = snapshot.val()
+        value.push(assetID)
+        console.log("value", value)
+        set(ref(db, "users/" + userEmail), { 
+          user: user,
+          assetIDs: value,
+        })
+      } else {
+        console.log("snapshot doesn't exist")
+        set(ref(db, "users/" + userEmail), { 
+          user: user,
+          assetIDs: [assetID],
+        })
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+    
     localStorage.setItem('qr', imageData)
   }
 
