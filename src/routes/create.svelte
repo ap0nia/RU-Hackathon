@@ -1,8 +1,45 @@
-<script lang="ts">
+<script lang="ts" context="module">
+  export async function load({ url, fetch }) {
+    const assetId = url.searchParams.get('id')
+    let didUpdate = false
+    if (url.searchParams.get('name')) {
+      didUpdate = true
+      await fetch('/api/create',{
+        method:'POST',
+        body: JSON.stringify({
+          name: url.searchParams.get('name'),
+          description: url.searchParams.get('description'),
+          assetId
+        })
+      })
+      // const customAttributes = {
+      //   registered: true,
+      //   reviews: []
+      // }
+      // const asset = await os.asset(assetId).update({
+      //   name:url.searchParams.get('name'),
+      //   description:url.searchParams.get('description'),
+      //   customAttributes
+      // });
+      //use openscreen to update asset with new custom attributes
+    }
+    return {
+      props: {
+        assetId,
+        didUpdate,
+      },
+    }
+  }
+
   let name = ''
   let description = ''
   let rating = 10
   let review = ''
+</script>
+
+<script lang="ts">
+  export let assetId
+  export let didUpdate
 </script>
 
 <template lang="pug">

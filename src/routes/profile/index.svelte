@@ -2,6 +2,7 @@
   import { getDatabase, ref, set } from 'firebase/database'
   import { initializeApp } from 'firebase/app'
   import { session } from '$app/stores'
+  import QR_Card from '$lib/QR_Card.svelte'
 
   // TODO: Replace with your app's Firebase project configuration
   const firebaseConfig = {
@@ -13,16 +14,17 @@
 
   // Get a reference to the database service
   const db = getDatabase(app)
-
+  export let createdAssets = []
   async function getQrCode() {
     const res = await fetch('/api/qr')
     const body = await res.json()
 
     const assetID = body.data.qrCode.assetId
     const imageData = body.data.qrCode.image.data
-
+    console.log(body)
     const user = $session.user
-
+    createdAssets = [...createdAssets,{asset: body.data.asset, pngData: imageData}]
+    console.log(createdAssets)
     set(ref(db, 'users'), {
       user,
       assetID,
@@ -65,6 +67,8 @@
   h1 hello, RU hacks!
   button(on:click|preventDefault='{getQrCode}') Get QR Code
   button(on:click|preventDefault='{saveQrCode}') Save the QR Code
+  +each('createdAssets as assetPlusCode')
+    QR_Card('{...assetPlusCode}')
 </template>
 
 <style lang="stylus">
