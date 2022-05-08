@@ -15,7 +15,7 @@
         a(href='/data') Data
       li
         span.fa-solid.fa-align-left.fa-2x
-        a(href='/form') Form
+        a(href='/create') Create
       li
         span.fa-solid.fa-display.fa-2x
         a(href='/display') Display
