@@ -1,20 +1,11 @@
 <script lang="ts">
-  import { getDatabase, ref, set, onValue, update, push, get } from 'firebase/database'
-  import { initializeApp } from 'firebase/app'
   import { session } from '$app/stores'
   // import { GetScansByAssetIdRequest } from '@openscreen/sdk';
+  import { getDatabase, ref, set, onValue, update, push, get } from 'firebase/database'
   import QR_Card from '$lib/QR_Card.svelte'
 
-  // TODO: Replace with your app's Firebase project configuration
-  const firebaseConfig = {
-    ...import.meta.env.VITE_FIREBASE_CREDENTIALS,
-    databaseURL: import.meta.env.VITE_FIREBASE_URL,
-  }
+  import {db} from "$lib/firebase.ts"
 
-  const app = initializeApp(firebaseConfig)
-
-  // Get a reference to the database service
-  const db = getDatabase(app)
   export let createdAssets = []
   async function getQrCode() {
     const res = await fetch('/api/qr')
