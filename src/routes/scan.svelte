@@ -1,7 +1,7 @@
 <script lang="ts" context='module'>
     let poggers = 'nope'
 export async function load({url}) {
-    const scanID = url.search.slice(1)
+    const scanID = url.searchParams.get('scanId')
     
     console.log(scanID) //these log to the server
     const response = {//this is a placeholder. replace with openscreen api call
@@ -47,6 +47,7 @@ export async function load({url}) {
 
 <script lang='ts'>
     import Display from '$lib/Display.svelte'
+import type { get } from './api/qr'
     export let reviews
     export let name
     export let description
