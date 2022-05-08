@@ -7,10 +7,10 @@ export async function load({url}) {
     const response = {//this is a placeholder. replace with openscreen api call
         asset: {
             assetId: 'abc123',
+            name: 'Test asset',
+            description: 'This should be replaced soon enough',
             customAttributes: {
-                registered: false,
-                name: 'Test asset',
-                description: 'This should be replaced soon enough',
+                registered: true,
                 reviews: [
                     {
                         rating: 5,
@@ -30,11 +30,29 @@ export async function load({url}) {
 
         }
     }
-    const path = response.asset.customAttributes.registered? 'display':'form';
-    poggers='yep'
+    if(!response.asset.customAttributes.registered)
+        return {
+            status: 302,
+            redirect: `/create?id=${response.asset.assetId}&attrs=${encodeURIComponent(JSON.stringify(response.asset.customAttributes))}`,
+        }
     return {
-        status: 302,
-        redirect: `/${path}?id=${response.asset.assetId}&attrs=${encodeURIComponent(JSON.stringify(response.asset.customAttributes))}`,
+        props: {
+            name: response.asset.name,
+            description: response.asset.description,
+            reviews: response.asset.customAttributes.reviews
+        }
     }
 }
 </script>
+
+<script lang='ts'>
+    import Display from '$lib/Display.svelte'
+    export let reviews
+    export let name
+    export let description
+    const props = {reviews, name, description}
+</script>
+
+<template lang="pug">
+    Display('{...props} showReviews=true')
+</template>
