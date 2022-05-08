@@ -1,19 +1,60 @@
-<script lang="ts">
+<script lang="ts" context="module">
+  export async function load({ url, fetch }) {
+    const assetId = url.searchParams.get('id')
+    let didUpdate = false
+    if (url.searchParams.get('name')) {
+      didUpdate = true
+      await fetch('/api/create',{
+        method:'POST',
+        body: JSON.stringify({
+          name: url.searchParams.get('name'),
+          description: url.searchParams.get('description'),
+          assetId
+        })
+      })
+      // const customAttributes = {
+      //   registered: true,
+      //   reviews: []
+      // }
+      // const asset = await os.asset(assetId).update({
+      //   name:url.searchParams.get('name'),
+      //   description:url.searchParams.get('description'),
+      //   customAttributes
+      // });
+      //use openscreen to update asset with new custom attributes
+    }
+    return {
+      props: {
+        assetId,
+        didUpdate,
+      },
+    }
+  }
+
   let name = ''
   let description = ''
 </script>
 
+<script lang="ts">
+  export let assetId
+  export let didUpdate
+</script>
+
 <template lang="pug">
-  form
-    ul.flex-outer
-      li
-        label(for='name') Name of Item
-          input(type='text' name='name' bind:value='{name}')
-      li
-        label(for='description') Description
-          textarea(name='description' bind:value='{description}')
-      li
-        button(type='submit') Submit
+  +if('didUpdate')
+    p Success! You have registered the asset.
+    +else
+      form
+        ul.flex-outer
+          li
+            label(for='name') Name of Item
+              input(type='text' name='name' bind:value='{name}')
+          li
+            label(for='description') Description
+              textarea(name='description' bind:value='{description}')
+          input(type='hidden' name='id' value='{assetId}')
+          li
+            button(type='submit') Submit
 </template>
 
 <style lang="stylus">
