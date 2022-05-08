@@ -1,4 +1,4 @@
-import {os, projectId} from '$lib/openscreen'
+import { os, projectId } from '$lib/openscreen'
 
 async function main() {
   // Create an asset and generate a QR Code
@@ -11,7 +11,7 @@ async function main() {
         {
           intent: 'https://ru-hackathon.vercel.app/scan',
           intentType: 'DYNAMIC_REDIRECT',
-          dynamicRedirectType: 'SCAN_ID_IN_QUERY_STRING_PARAMETER'
+          dynamicRedirectType: 'SCAN_ID_IN_QUERY_STRING_PARAMETER',
         },
       ],
     })
