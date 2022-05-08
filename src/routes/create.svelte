@@ -1,21 +1,31 @@
 <script lang="ts" context="module">
-  export async function load({ url }) {
-    const assetID = url.searchParams.get('id')
+  export async function load({ url, fetch }) {
+    const assetId = url.searchParams.get('id')
     let didUpdate = false
     if (url.searchParams.get('name')) {
       didUpdate = true
-      const customAttributes = {
-        registered: true,
-        name: url.searchParams.get('name'),
-        description: url.searchParams.get('description'),
-        reviews: []
-      }
-      console.log(assetID, customAttributes)
+      await fetch('/api/create',{
+        method:'POST',
+        body: JSON.stringify({
+          name: url.searchParams.get('name'),
+          description: url.searchParams.get('description'),
+          assetId
+        })
+      })
+      // const customAttributes = {
+      //   registered: true,
+      //   reviews: []
+      // }
+      // const asset = await os.asset(assetId).update({
+      //   name:url.searchParams.get('name'),
+      //   description:url.searchParams.get('description'),
+      //   customAttributes
+      // });
       //use openscreen to update asset with new custom attributes
     }
     return {
       props: {
-        assetID,
+        assetId,
         didUpdate,
       },
     }
@@ -26,7 +36,7 @@
 </script>
 
 <script lang="ts">
-  export let assetID
+  export let assetId
   export let didUpdate
 </script>
 
@@ -42,7 +52,7 @@
           li
             label(for='description') Description
               textarea(name='description' bind:value='{description}')
-          input(type='hidden' name='id' value='{assetID}')
+          input(type='hidden' name='id' value='{assetId}')
           li
             button(type='submit') Submit
 </template>
