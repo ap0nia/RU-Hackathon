@@ -18,7 +18,7 @@
 </script>
 
 <template lang="pug">
-    h1 Asset ID {assetId}
+    h3 Asset ID {assetId}
     p {name}
     p {description}
     //- p { username }
