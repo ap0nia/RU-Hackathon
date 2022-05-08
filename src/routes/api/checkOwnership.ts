@@ -3,7 +3,7 @@ import { ref, get as dbGet } from 'firebase/database'
 
 async function main(request) {
     let isOwner = false;
-    const assetId, userId = request.json()
+    const {assetId, userId} = request.json()
     console.log("asset id: " + assetId)
     console.log("user id: " + typeof userId)
 

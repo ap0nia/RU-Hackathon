@@ -10,8 +10,12 @@
           name: url.searchParams.get('name'),
           description: url.searchParams.get('description'),
           assetId,
-        }),
+        })
       })
+      return {
+        status: 302,
+        redirect: '/profile/codeListing'
+      }
     }
     return {
       props: {
@@ -26,16 +30,11 @@
   export let assetId
   export let didUpdate
 
-  import { goto } from '$app/navigation'
 
   let name = ''
   let description = ''
   let rating = 10
   let review = ''
-
-  async function handleSubmit() {
-    goto('/profile/codeListing')
-  }
 </script>
 
 <template lang="pug">
@@ -53,8 +52,9 @@
       li
         label(for='review') Review
           textarea(name='review' bind:value='{review}')
+      input(type='hidden' name='id' bind:value='{assetId}')
       li
-        button(type='submit' on:click|preventDefault='{handleSubmit}') Submit
+        button(type='submit') Submit
 </template>
 
 <style lang="stylus">
