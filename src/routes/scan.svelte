@@ -1,8 +1,8 @@
 <script lang='ts' context='module'>
-    import {os} from '$lib/openscreen'
-    export async function load({url}) {
+    export async function load({url, fetch}) {
         const scanId = url.searchParams.get('scanId')
-        const scan = await os.scan(scanId).get();
+        const res = await fetch(`/api/scan?scanId=${scanId}`).then(r=>r.json())
+        const scan = res.scan
         if(!scan.asset.customAttributes?.registered)
             return  {
                 status: 302,
@@ -14,7 +14,7 @@
         return {
             props: {
                 props
-            }
+            },
         }
     }
 </script>

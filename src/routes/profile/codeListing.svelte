@@ -5,6 +5,6 @@
 </script>
 
 <template lang="pug">
-  +each('assetIDs as assetID')
-    QR_Card(assetID='{assetID}')
+  +each('assets as asset')
+    QR_Card(asset='{asset}')
 </template>
