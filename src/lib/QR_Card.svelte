@@ -21,8 +21,21 @@
 </script>
 
 <template lang="pug">
+  div
     h3 Asset ID {assetId}
     p {name}
     p {description}
     img(src='{`data:image/png;base64,${pngData}`}' alt='qr code')
 </template>
+
+<style lang='stylus'>
+  div
+    background: black
+    display flex
+    flex-direction column
+    align-items center
+    padding 20px
+    padding-bottom 30px
+    border-radius 10px
+    margin-bottom: 10px
+</style>
