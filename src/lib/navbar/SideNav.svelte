@@ -7,11 +7,21 @@
 <template lang="pug">
   nav(class:hidden='{!showSidebar}')
     ul
-      li: a(href='/') Home
-      li: a(href='/data') Data
-      li: a(href='/form') Form
-      li: a(href='/display') Display
-      li: a(href='/scan') Scan
+      li
+        span.fa-solid.fa-house-chimney.fa-2x
+        a(href='/') Home
+      li 
+        span.fa-solid.fa-database.fa-2x
+        a(href='/data') Data
+      li
+        span.fa-solid.fa-align-left.fa-2x
+        a(href='/create') Create
+      li
+        span.fa-solid.fa-display.fa-2x
+        a(href='/display') Display
+      li
+        span.fa-solid.fa-qrcode.fa-2x
+        a(href='/scan') Scan
 
   +if('showSidebar')
     .modal(transition:fade)
@@ -43,6 +53,9 @@
     row-gap: 2rem
 
     list-style: none
+
+  span
+    margin-right: 0.75rem
 
   a
     font-size: 1.2rem
