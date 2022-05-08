@@ -1,9 +1,8 @@
 <script lang="ts" context="module">
   export async function load({ url, fetch }) {
     const assetId = url.searchParams.get('id')
-    let didUpdate = false
+    const isOwner = url.searchParams.get('isOwner')
     if (url.searchParams.get('name')) {
-      didUpdate = true
       await fetch('/api/create', {
         method: 'POST',
         body: JSON.stringify({
@@ -20,7 +19,6 @@
     return {
       props: {
         assetId,
-        didUpdate,
       },
     }
   }
@@ -28,8 +26,7 @@
 
 <script lang="ts">
   export let assetId
-  export let didUpdate
-
+  export let isOwner
 
   let name = ''
   let description = ''
@@ -40,32 +37,34 @@
 <template lang="pug">
   form
     ul.flex-outer
-      li
-        label(for='name') Name of Item
-          input(type='text' name='name' bind:value='{name}')
-      li
-        label(for='description') Description
-          textarea(name='description' bind:value='{description}')
-      li
-        label(for='rating') Rating: {rating}
-          input(type='range' min="1" max="10" name='rating' bind:value='{rating}')
-      li
-        label(for='review') Review
-          textarea(name='review' bind:value='{review}')
+      +if('isOwner')
+        li
+          label(for='name') Name of Item
+            input(type='text' name='name' bind:value='{name}')
+        li
+          label(for='description') Description
+            textarea(name='description' bind:value='{description}')
+        +else
+          li
+            label(for='rating') Rating: {rating}
+              input(type='range' min="1" max="10" name='rating' bind:value='{rating}')
+          li
+            label(for='review') Review
+              textarea(name='review' bind:value='{review}')
       input(type='hidden' name='id' bind:value='{assetId}')
       li
         button(type='submit') Submit
 </template>
 
 <style lang="stylus">
-  .flex-outer{
+  .flex-outer {
     list-style-type: none;
     padding: 0;
     max-width: 800px;
     margin: 0 auto;
   }
   
-  .flex-outer li{
+  li{
     justify-content center
     display: flex;
     flex-wrap: wrap;

@@ -8,7 +8,7 @@
 <template lang="pug">
   h1 {name}
   p {description}
-  +if('showReviews==="true"')
+  +if('showReviews==="true"&&reviews.length>0')
     h2 Reviews
     +each('reviews as {rating, fulltext}')
       div#rating

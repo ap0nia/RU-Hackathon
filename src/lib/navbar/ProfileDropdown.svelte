@@ -5,6 +5,7 @@
   let username = 'defaultusername'
 
   async function handleLogout() {
+    document.cookie = 'user={}'
     const client = await createClient()
     await logout(client)
     $session.isAuthenticated = false
