@@ -49,36 +49,7 @@
     }).catch((error) => {
       console.error(error);
     });
-    // onValue(assetIDsRef, (snapshot) => {
-    //   if (!snapshot.exists()) {
-    //     console.log("snapshot doesn't exist")
-    //     set(ref(db, "users/" + userEmail), { 
-    //       user: user,
-    //       assetIDs: [assetID],
-    //     })
-    //   } else {
-    //     console.log("snapshot does exist")
-    //     const value = snapshot.val()
-    //     value.push(assetID)
-    //     console.log("value", value)
-    //     set(ref(db, "users/" + userEmail), { 
-    //       user: user,
-    //       assetIDs: value,
-    //     })
-        // ref(db, 'users/' + userEmail).child("assetIDs").set( {
-        //   user: user,
-        //   assetIDs: value
-        // })
-        // const assetIDRef = ref(db, "users/" + userEmail + "/assetIDs")
-        // const key = push(assetIDRef)
-        // var newData = {
-        //   id: key,
-          
-        // }
-        // set(assetIDs, 'new asset id')
-      // }
-      // off(userRef)
-
+    
     localStorage.setItem('qr', imageData)
   }
 
