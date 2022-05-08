@@ -1,21 +1,4 @@
-<script lang="ts" context="module">
-  export async function load({ url }) {
-    const assetID = url.searchParams.get('id')
-    //TODO: if the custom attributes aren't in the search params, try loading them from the API
-    const customAttributes = JSON.parse(url.searchParams.get('attrs'))
-    console.log('load is running')
-    return {
-      props: {
-        assetID,
-        ...customAttributes,
-        showReviews: 'true'//this is a string because it's also passed from parent components, and that casts it to string for some reason.
-      },
-    }
-  }
-</script>
-
 <script lang="ts">
-  export let assetID
   export let name
   export let description
   export let reviews
@@ -43,7 +26,7 @@
       display inline
       margin-right 10px
     margin-bottom 10px
-    background #EEEEEE
+    background black
     border-radius 5px
     padding 5px
 
