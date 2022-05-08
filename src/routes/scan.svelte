@@ -35,11 +35,6 @@ export async function load({url}) {
             status: 302,
             redirect: `/form?id=${response.asset.assetId}&attrs=${encodeURIComponent(JSON.stringify(response.asset.customAttributes))}`,
         }
-    console.log({
-            name: response.asset.name,
-            description: response.asset.description,
-            reviews: response.asset.customAttributes.reviews
-        })
     return {
         props: {
             name: response.asset.name,
@@ -51,7 +46,7 @@ export async function load({url}) {
 </script>
 
 <script lang='ts'>
-    import Display from './display.svelte'
+    import Display from '$lib/Display.svelte'
     export let reviews
     export let name
     export let description
