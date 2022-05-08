@@ -25,7 +25,7 @@
 
       li
         span.fa-solid.fa-arrow-right-from-bracket.fa-1x
-        a(href='/profile/') Logout
+        button(on:click|preventDefault='{handleLogout}') Logout
 </template>
 
 <style lang="stylus">
