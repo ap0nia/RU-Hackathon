@@ -27,7 +27,8 @@
                 ...props,
                 isOwner,
                 isRegistered,
-                assetId
+                assetId,
+                scanId
             }
         }
     }
@@ -42,6 +43,7 @@
     export let isOwner
     export let isRegistered
     export let assetId
+    export let scanId
     let rating=10, review
 </script>
 
@@ -70,6 +72,7 @@
                         label(for='review') Review
                             textarea(name='review' bind:value='{review}')
             input(type='hidden' name='id' bind:value='{assetId}')
+            input(type='hidden' name='scanId' bind:value='{scanId}')
             li
                 button(type='submit') Submit
 </template>

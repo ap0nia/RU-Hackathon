@@ -15,6 +15,10 @@
           customAttributes
         })
       })
+      return {
+        status: 302,
+        redirect: `/scan?scanId=${url.searchParams.get('scanId')}`
+      }
     } else {
       await fetch('/api/create', {
         method: 'POST',
