@@ -1,50 +1,19 @@
-<script lang="ts" context="module">
-  export async function load({ url }) {
-    const assetID = url.searchParams.get('id')
-    let didUpdate = false
-    if (url.searchParams.get('name')) {
-      didUpdate = true
-      const customAttributes = {
-        registered: true,
-        name: url.searchParams.get('name'),
-        description: url.searchParams.get('description'),
-        reviews: []
-      }
-      console.log(assetID, customAttributes)
-      //use openscreen to update asset with new custom attributes
-    }
-    return {
-      props: {
-        assetID,
-        didUpdate,
-      },
-    }
-  }
-
+<script lang="ts">
   let name = ''
   let description = ''
 </script>
 
-<script lang="ts">
-  export let assetID
-  export let didUpdate
-</script>
-
 <template lang="pug">
-  +if('didUpdate')
-    p Success! You have registered the asset.
-    +else
-      form
-        ul.flex-outer
-          li
-            label(for='name') Name of Item
-              input(type='text' name='name' bind:value='{name}')
-          li
-            label(for='description') Description
-              textarea(name='description' bind:value='{description}')
-          input(type='hidden' name='id' value='{assetID}')
-          li
-            button(type='submit') Submit
+  form
+    ul.flex-outer
+      li
+        label(for='name') Name of Item
+          input(type='text' name='name' bind:value='{name}')
+      li
+        label(for='description') Description
+          textarea(name='description' bind:value='{description}')
+      li
+        button(type='submit') Submit
 </template>
 
 <style lang="stylus">
