@@ -2,10 +2,15 @@
 </script>
 
 <template lang="pug">
-  h1 hello, RU hacks!
-  p Home page
+  .home
+    h1 Welcome!
+    img(src='/bully_maguire.gif' alt='based')
 </template>
 
 <style lang="stylus">
-
+  .home
+    overflow: hidden
+    display: flex
+    flex-direction: column
+    align-items: center
 </style>

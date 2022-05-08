@@ -12,16 +12,6 @@
           assetId,
         }),
       })
-      // const customAttributes = {
-      //   registered: true,
-      //   reviews: []
-      // }
-      // const asset = await os.asset(assetId).update({
-      //   name:url.searchParams.get('name'),
-      //   description:url.searchParams.get('description'),
-      //   customAttributes
-      // });
-      //use openscreen to update asset with new custom attributes
     }
     return {
       props: {
@@ -30,16 +20,22 @@
       },
     }
   }
-
-  let name = ''
-  let description = ''
-  let rating = 10
-  let review = ''
 </script>
 
 <script lang="ts">
   export let assetId
   export let didUpdate
+
+  import { goto } from '$app/navigation'
+
+  let name = ''
+  let description = ''
+  let rating = 10
+  let review = ''
+
+  async function handleSubmit() {
+    goto('/profile/codeListing')
+  }
 </script>
 
 <template lang="pug">
@@ -58,7 +54,7 @@
         label(for='review') Review
           textarea(name='review' bind:value='{review}')
       li
-        button(type='submit') Submit
+        button(type='submit' on:click|preventDefault='{handleSubmit}') Submit
 </template>
 
 <style lang="stylus">
@@ -115,7 +111,6 @@
     border: none;
     background: #333;
     color: #f2f2f2;
-    //text-transform: uppercase;
     letter-spacing: .09em;
     border-radius: 2px;
   }

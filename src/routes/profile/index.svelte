@@ -5,6 +5,8 @@
 
   import {db} from "$lib/firebase.ts"
 
+  let message
+
   export let createdAssets = []
   async function getQrCode() {
     const res = await fetch('/api/qr')
@@ -16,7 +18,6 @@
     const userEmail = user.email.split('@')[0].replaceAll('.','dot')
     const assetIDsRef = ref(db, 'users/' + userEmail + "/assetIDs");
 
-
     const dbRef = ref(getDatabase());
     get(assetIDsRef).then((snapshot) => {
       if (snapshot.exists()) {
@@ -26,6 +27,7 @@
           user: user,
           assetIDs: value,
         })
+        message = assetID
       } else {
         console.log("snapshot doesn't exist")
         set(ref(db, "users/" + userEmail), { 
@@ -37,14 +39,34 @@
       console.error(error);
     });
   }
+
 </script>
 
 <template lang="pug">
-  button(on:click|preventDefault='{getQrCode}') Get QR Code
-  +each('createdAssets as assetPlusCode')
-    QR_Card('{...assetPlusCode}')
+  .dashboard
+    +if('message')
+      h5 Successfully obtained QR Code: 
+      p {message}
+    button(on:click|preventDefault='{getQrCode}') Get QR Code
+    +each('createdAssets as assetPlusCode')
+      QR_Card('{...assetPlusCode}')
 </template>
 
 <style lang="stylus">
+  .dashboard
+    display: flex
+    flex-direction: column
+    align-items: center
+
+  button
+    width: 45%
+    height: 3rem
+
+    border-radius: 0.25rem
+    background: accent-100
+    transition: 200ms ease-in
+
+    &:hover
+      background: accent-300
 
 </style>

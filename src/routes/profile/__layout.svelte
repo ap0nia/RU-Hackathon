@@ -13,6 +13,7 @@
   import { goto } from '$app/navigation'
 
   let client
+  let loading = true
 
   onMount(async () => {
     client = await createClient()
@@ -25,10 +26,19 @@
     }
     $session.isAuthenticated = true
     $session.user = await client.getUser()
+    loading = false
   })
 </script>
 
 <template lang="pug">
-  p Welcome {$session.user?.given_name}
-  slot
+  +if('!loading')
+    .profile
+      h1 Welcome {$session.user?.given_name}
+      slot
 </template>
+
+<style lang="stylus">
+  h1
+    text-align: center
+    margin-bottom: 2rem
+</style>
