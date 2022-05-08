@@ -1,14 +1,15 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-
   export let asset
-
-  let assetId, name, description, pngData
+  export let pngData
+  let assetId, name, description
   let loading = true
 
-  onMount(async () => {
-    ;({ assetId, name, description } = asset.asset)
-    pngData = asset.asset.qrCodes[0].image.data
+  onMount(async ()=> {
+    ({assetId, description} = asset.asset)
+    name = asset.asset.customAttrbutes?.name||'Uninitialized QR Code'
+    if(!pngData)
+      pngData = asset.asset.qrCodes[0].image.data
     loading = false
   })
 </script>
