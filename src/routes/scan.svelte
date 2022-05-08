@@ -5,14 +5,14 @@
         // console.log(user)
         const {scan, user} = await fetch(`/api/scan?scanId=${scanId}`).then(r=>r.json())
         const assetId = scan.asset.assetId
-        const userId = user.email.slice(0,user.email.indexOf('@'))
-        const {isOwner} = await fetch(`/api/checkOwnership?assetId=${assetId}&userId=${userId}`).then(r=>r.json())
         console.log(isOwner)
         if(!scan.asset.customAttributes?.registered)
             return  {
                 status: 302,
-                redirect:`/create?id=${scan.asset.assetId}`
+                redirect:`/create?id=${assetId}`
             }
+        const userId = user.email.slice(0,user.email.indexOf('@'))
+        const {isOwner} = await fetch(`/api/checkOwnership?assetId=${assetId}&userId=${userId}`).then(r=>r.json())
         const {name, description} = scan.asset
         const reviews = scan.asset.customAttributes.reviews
         const props = {}//{reviews, name:scan.asset.customAttributes.name, description}
@@ -31,6 +31,5 @@ import type { assetID } from './edit.svelte'
 </script>
 
 <template lang="pug">
-    p hi
-    //- Display('{...props} showReviews=true')
+    Display('{...props} showReviews=true')
 </template>
