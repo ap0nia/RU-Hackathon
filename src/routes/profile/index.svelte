@@ -13,7 +13,7 @@
     const assetID = body.data.qrCode.assetId
     const imageData = body.data.qrCode.image.data
     const user = $session.user
-    const userEmail = user.email.split('@')[0]
+    const userEmail = user.email.split('@')[0].replaceAll('.','dot')
     const assetIDsRef = ref(db, 'users/' + userEmail + "/assetIDs");
 
 
