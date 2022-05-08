@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { getDatabase, ref, set } from 'firebase/database'
+  import { getDatabase, ref, set, onValue, update, push, get } from 'firebase/database'
   import { initializeApp } from 'firebase/app'
   import { session } from '$app/stores'
+  // import { GetScansByAssetIdRequest } from '@openscreen/sdk';
 
   // TODO: Replace with your app's Firebase project configuration
   const firebaseConfig = {
@@ -13,6 +14,7 @@
 
   // Get a reference to the database service
   const db = getDatabase(app)
+  const count = 0
 
   async function getQrCode() {
     const res = await fetch('/api/qr')
@@ -22,11 +24,60 @@
     const imageData = body.data.qrCode.image.data
 
     const user = $session.user
+    const userEmail = user.email.split('@')[0]
+    const assetIDsRef = ref(db, 'users/' + userEmail + "/assetIDs");
 
-    set(ref(db, 'users'), {
-      user,
-      assetID,
-    })
+
+    const dbRef = ref(getDatabase());
+    get(assetIDsRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log("snapshot does exist")
+        const value = snapshot.val()
+        value.push(assetID)
+        console.log("value", value)
+        set(ref(db, "users/" + userEmail), { 
+          user: user,
+          assetIDs: value,
+        })
+      } else {
+        console.log("snapshot doesn't exist")
+        set(ref(db, "users/" + userEmail), { 
+          user: user,
+          assetIDs: [assetID],
+        })
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+    // onValue(assetIDsRef, (snapshot) => {
+    //   if (!snapshot.exists()) {
+    //     console.log("snapshot doesn't exist")
+    //     set(ref(db, "users/" + userEmail), { 
+    //       user: user,
+    //       assetIDs: [assetID],
+    //     })
+    //   } else {
+    //     console.log("snapshot does exist")
+    //     const value = snapshot.val()
+    //     value.push(assetID)
+    //     console.log("value", value)
+    //     set(ref(db, "users/" + userEmail), { 
+    //       user: user,
+    //       assetIDs: value,
+    //     })
+        // ref(db, 'users/' + userEmail).child("assetIDs").set( {
+        //   user: user,
+        //   assetIDs: value
+        // })
+        // const assetIDRef = ref(db, "users/" + userEmail + "/assetIDs")
+        // const key = push(assetIDRef)
+        // var newData = {
+        //   id: key,
+          
+        // }
+        // set(assetIDs, 'new asset id')
+      // }
+      // off(userRef)
 
     localStorage.setItem('qr', imageData)
   }
