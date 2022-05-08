@@ -13,6 +13,7 @@
     <i class="fa-solid fa-user fa-2x"></i>
     <i class="fa-solid fa-sliders fa-2x"></i>
     <i class="fa-solid fa-arrow-right-from-bracket fa-2x"></i>
+    <i class="fa-solid fa-address-book fa-2x"></i>
 </footer>
 
 <!-- <template lang="pug">
