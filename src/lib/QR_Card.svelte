@@ -7,7 +7,7 @@
 
   onMount(async ()=> {
     ({assetId, description} = asset.asset)
-    name = asset.asset.customAttrbutes?.name||'Uninitialized QR Code'
+    name = asset.asset.customAttributes?.name||'Uninitialized QR Code'
     if(!pngData)
       pngData = asset.asset.qrCodes[0].image.data
     loading = false

@@ -9,7 +9,7 @@ async function main() {
       name: 'Custom QR Code',
       qrCodes: [
         {
-          intent: 'https://ru-hackathon.vercel.app/scan',
+          intent: 'https://ru-v2.vercel.app/scan',
           intentType: 'DYNAMIC_REDIRECT',
           dynamicRedirectType: 'SCAN_ID_IN_QUERY_STRING_PARAMETER',
         },

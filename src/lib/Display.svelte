@@ -8,12 +8,12 @@
 <template lang="pug">
   h1 {name}
   p {description}
-  +if('showReviews==="true"')
+  +if('showReviews==="true"&&reviews.length>0')
     h2 Reviews
-    +each('reviews as {rating, fulltext}')
+    +each('reviews as {rating, review}')
       div#rating
-        h3 {rating}/5
-        span {fulltext}
+        h3 {rating}/10
+        span {review}
 </template>
 
 <style lang="stylus">
