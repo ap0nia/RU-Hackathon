@@ -1,6 +1,8 @@
 <script lang="ts">
   let name = ''
   let description = ''
+  let rating = 10
+  let review = ''
 </script>
 
 <template lang="pug">
@@ -12,6 +14,12 @@
       li
         label(for='description') Description
           textarea(name='description' bind:value='{description}')
+      li
+        label(for='rating') Rating: {rating}
+          input(type='range' min="1" max="10" name='rating' bind:value='{rating}')
+      li
+        label(for='review') Review
+          textarea(name='review' bind:value='{review}')
       li
         button(type='submit') Submit
 </template>
@@ -77,5 +85,9 @@
   
   .flex-inner li {
     width: 100px;
+  }
+
+  .flex-outer li input[type='range']{
+    padding: 0
   }
 </style>
