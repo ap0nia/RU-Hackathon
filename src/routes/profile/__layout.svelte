@@ -29,7 +29,6 @@
 </script>
 
 <template lang="pug">
-  h1 profile page
   p Welcome {$session.user?.given_name}
   slot
 </template>
