@@ -17,7 +17,7 @@ One non-technical challenge we ran into was the limit of the time. We actually h
 Add statistics of a QR code being scanned through tools like Google Analytics. We can also let creators understand how their QR code is being utilized. Besides, we can do a better job at promoting the QuickReview app with the target users.
 
 ## How to use this project
-The web app is available on [QuickReview](https://quick-review.vercel.app/)
+The web app is available on [QuickReview](https://quick-review.vercel.app/).
 To use the app, generate a QR code by logging into the app, then scan the QR code to input related information
 
 ## License
