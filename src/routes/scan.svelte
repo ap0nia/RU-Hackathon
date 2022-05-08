@@ -5,7 +5,6 @@
         // console.log(user)
         const {scan, user} = await fetch(`/api/scan?scanId=${scanId}`).then(r=>r.json())
         const assetId = scan.asset.assetId
-        console.log(isOwner)
         if(!scan.asset.customAttributes?.registered)
             return  {
                 status: 302,
@@ -13,13 +12,14 @@
             }
         const userId = user.email.slice(0,user.email.indexOf('@')).replaceAll('.','dot')
         const {isOwner} = await fetch(`/api/checkOwnership`,{
-            body: {
-                assetID, userId
-            }
+            method: 'POST',
+            body: JSON.stringify({
+                assetId, userId
+            })
         }).then(r=>r.json())
-        const {name, description} = scan.asset
+        console.log(isOwner)
         const reviews = scan.asset.customAttributes.reviews
-        const props = {reviews, name:scan.asset.customAttributes.name, description}
+        const props = {reviews, name: scan.asset.customAttributes.name, description: scan.asset.description}
         return {
             props: {
                 props

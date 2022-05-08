@@ -11,9 +11,11 @@ async function getAssetIDs(id) {
   const app = initializeApp(firebaseConfig)
   const db = getDatabase(app)
 
-  const userRef = ref(db, `users/${id}`)
+  const userRef = ref(db, `users/${id}/assetIDs`)
   const snapshot = await dbGet(userRef)
-  const { assetIDs } = snapshot.val()
+  if(!snapshot.exists())
+    return []
+  const assetIDs = snapshot.val()
 
   return assetIDs
 }
