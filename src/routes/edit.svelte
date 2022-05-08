@@ -36,8 +36,8 @@
     export let name
     export let description
     const props = {reviews, name, description}
-    import Form from './form.svelte'
-    import Display from './display.svelte'
+    import Form from './create.svelte'
+    import Display from '$lib/Display.svelte'
   </script>
   
   <template lang="pug">
